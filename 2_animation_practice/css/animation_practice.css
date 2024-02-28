@@ -1,0 +1,89 @@
+/* Ensure text is always centered and in Arial font */
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #333; /* Dark gray background */
+  color: #ff0; /* Yellow text color */
+}
+
+/* Style for the container of the animation */
+.container {
+  text-align: center;
+}
+
+/* Apply animation to both words */
+.word span,
+.wordchange span {
+  display: inline-block;
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+/* Define keyframes for the 'silent' animation */
+@keyframes animateSilent {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* Apply animation to the 'silent' word */
+.word span {
+  animation: animateSilent 6s infinite; /* 'silent' animation duration */
+}
+
+/* Define keyframes for the 'listen' animation */
+@keyframes animateListen {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Apply animation to the 'listen' word */
+.wordchange span {
+  animation: animateListen 6s infinite; /* 'listen' animation duration */
+}
+
+/* Swirling background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 100%, #ffffcc 5%, transparent 50%), 
+              radial-gradient(circle at 50% 0%, #ffffcc 5%, transparent 50%);
+  background-size: 200% 200%;
+  animation: swirl 10s infinite linear;
+}
+
+@keyframes swirl {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
